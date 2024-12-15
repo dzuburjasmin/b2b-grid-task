@@ -20,7 +20,6 @@ export class MainGridComponent implements OnInit {
     this.getDataFromApi();
     this.querySubject
     .subscribe((word) => {
-      debugger
       if (word.length>=3){
         this.filteredGridData = this.gridData.filter((item: string[]) =>
           Object.values(item)
