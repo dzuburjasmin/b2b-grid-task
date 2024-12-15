@@ -1,0 +1,48 @@
+<div class="container">
+<div class="grid">
+    <div class="search-container">
+        <input
+          type="text"
+          placeholder="Pretraži..."
+          (input)="onChangeSearch($event)"
+          class="search-bar"
+        />
+      </div>
+<dx-data-grid
+  [dataSource]="filteredGridData"
+  [columns]="gridColumns"
+  [showBorders]="true"
+  [paging]="{ pageSize: 10 }"
+  [pager]="{ showPageSizeSelector: true, allowedPageSizes: [5, 10, 20] }"
+  [filterRow]="{ visible: true }"
+  [rowAlternationEnabled]="true"
+  [filterRow]="{ visible: false }"
+  >
+</dx-data-grid>
+</div>
+
+  <div class="sidebar">
+    <div class="hidden-columns">
+      <ul>
+        <li
+          *ngFor="let col of hiddenColumns"
+          (dblclick)="addCol(col)"
+          class="hidden-column-item">
+          {{ col }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="visible-columns">
+      <ul>
+        <li
+          *ngFor="let col of gridColumns"
+          (dblclick)="removeCol(col)"
+          class="visible-column-item">
+          {{ col }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
